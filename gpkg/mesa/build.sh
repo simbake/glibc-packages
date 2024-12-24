@@ -18,7 +18,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -D dri3=enabled
 -D egl=enabled
 -D gallium-opencl=icd
--D gallium-drivers=freedreno,swrast,virgl,zink,r600,radeonsi,nouveau,lima,panfrost
+-D gallium-drivers=zink
 -D gallium-extra-hud=true
 -D gallium-nine=true
 -D gallium-va=enabled
@@ -43,8 +43,8 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 
 termux_step_pre_configure() {
 	case $TERMUX_ARCH in
-		arm|aarch64) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=swrast,panfrost,freedreno -Dfreedreno-kmds=msm,kgsl";;
-		*) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=swrast";;
+		arm|aarch64) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio";;
+		*) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio";;
 	esac
 	export MESON_PACKAGE_CACHE_DIR="${TERMUX_PKG_SRCDIR}"
 	export LLVM_CONFIG=$TERMUX_PREFIX/bin/llvm-config
