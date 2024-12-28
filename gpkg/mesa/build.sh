@@ -6,7 +6,7 @@ TERMUX_PKG_MAINTAINER="@termux-pacman"
 TERMUX_PKG_VERSION="24.2.6"
 TERMUX_PKG_SRCURL=https://mesa.freedesktop.org/archive/mesa-${TERMUX_PKG_VERSION}.tar.xz
 TERMUX_PKG_SHA256=2b68c4a6f204c1999815a457299f81c41ba7bf48c4674b0b2d1d8864f41f3709
-TERMUX_PKG_DEPENDS="libglvnd-glibc, gcc-libs-glibc, libdrm-glibc, libllvm-glibc, libexpat-glibc, zlib-glibc, zstd-glibc, libx11-glibc, libxcb-glibc, libxext-glibc, libxfixes-glibc, libxshmfence-glibc, libxxf86vm-glibc, libwayland-glibc, libvdpau-glibc, libomxil-bellagio-glibc, libva-glibc, libxml2-glibc, libelf-glibc, libbz2-glibc, libclc-glibc"
+TERMUX_PKG_DEPENDS="vulkan-icd-loader-glibc, libglvnd-glibc, gcc-libs-glibc, libdrm-glibc, libllvm-glibc, libexpat-glibc, zlib-glibc, zstd-glibc, libx11-glibc, libxcb-glibc, libxext-glibc, libxfixes-glibc, libxshmfence-glibc, libxxf86vm-glibc, libwayland-glibc, libvdpau-glibc, libomxil-bellagio-glibc, libva-glibc, libxml2-glibc, libelf-glibc, libbz2-glibc, libclc-glibc"
 TERMUX_PKG_SUGGESTS="mesa-dev-glibc"
 TERMUX_PKG_BUILD_DEPENDS="llvm-glibc, libwayland-protocols-glibc, xorgproto-glibc, glslang-glibc"
 TERMUX_PKG_PYTHON_COMMON_DEPS="mako, setuptools, pyyaml"
@@ -18,7 +18,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -D dri3=enabled
 -D egl=enabled
 -D gallium-opencl=icd
--D gallium-drivers=freedreno,swrast,virgl,zink,r600,radeonsi,nouveau,lima,panfrost
+-D gallium-drivers=freedreno,virgl,zink,r600,nouveau,lima,panfrost
 -D gallium-extra-hud=true
 -D gallium-nine=true
 -D gallium-va=enabled
@@ -32,9 +32,9 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -D glx=dri
 -D intel-clc=system
 -D libunwind=disabled
--D llvm=enabled
+-D llvm=disabled
 -D microsoft-clc=disabled
--D osmesa=true
+-D osmesa=false
 -D platforms=x11,wayland
 -D shared-glapi=enabled
 -D valgrind=disabled
@@ -43,8 +43,8 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 
 termux_step_pre_configure() {
 	case $TERMUX_ARCH in
-		arm|aarch64) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio,freedreno";;
-		*) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio,freedreno";;
+		arm|aarch64) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio";;
+		*) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio";;
 	esac
 	export MESON_PACKAGE_CACHE_DIR="${TERMUX_PKG_SRCDIR}"
 	export LLVM_CONFIG=$TERMUX_PREFIX/bin/llvm-config
