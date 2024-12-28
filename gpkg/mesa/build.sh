@@ -23,7 +23,6 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -D gallium-nine=false
 -D gallium-va=enabled
 -D gallium-vdpau=enabled
--D gallium-omx=bellagio
 -D gallium-xa=disabled
 -D gbm=enabled
 -D gles1=enabled
