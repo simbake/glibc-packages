@@ -43,8 +43,8 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 
 termux_step_pre_configure() {
 	case $TERMUX_ARCH in
-		arm|aarch64) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio";;
-		*) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=virtio";;
+		arm|aarch64) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=freedreno,virtio";;
+		*) TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -Dvulkan-drivers=freedreno,virtio";;
 	esac
 	export MESON_PACKAGE_CACHE_DIR="${TERMUX_PKG_SRCDIR}"
 	export LLVM_CONFIG=$TERMUX_PREFIX/bin/llvm-config
