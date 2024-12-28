@@ -17,7 +17,6 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -D b_ndebug=true
 -D dri3=enabled
 -D egl=enabled
--D gallium-opencl=icd
 -D gallium-drivers=virgl
 -D gallium-extra-hud=true
 -D gallium-nine=false
