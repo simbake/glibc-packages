@@ -33,31 +33,31 @@ termux_step_post_get_source() {
 	rm -rf subprojects
 }
 termux_step_pre_configure() {
-    termux_setup_cmake
+termux_setup_cmake
 
-    # Add GNU-specific macro definition
-    CPPFLAGS+=" -D__USE_GNU"
-    
-    # Optional: Adjust LDFLAGS for glibc (e.g., threading)
-    LDFLAGS+=" -pthread"
+# Add GNU-specific macro definition
+CPPFLAGS+=" -D__USE_GNU"
 
-    # Set up wrapper binary directory
-    _WRAPPER_BIN=$TERMUX_PKG_BUILDDIR/_wrapper/bin
-    mkdir -p $_WRAPPER_BIN
-    
-    if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ]; then
-        # Replace CMake wrapper logic for cross-compilation
-        sed 's|@CMAKE@|'"$(command -v cmake)"'|g' \
-            $TERMUX_PKG_BUILDER_DIR/cmake-wrapper.in \
-            > $_WRAPPER_BIN/cmake
-        chmod 0700 $_WRAPPER_BIN/cmake
-    fi
+# Optional: Adjust LDFLAGS for glibc (e.g., threading)
+LDFLAGS+=" -pthread"
 
-    # Export the wrapper binary directory to PATH
-    export PATH=$_WRAPPER_BIN:$PATH
+# Set up wrapper binary directory
+_WRAPPER_BIN=$TERMUX_PKG_BUILDDIR/_wrapper/bin
+mkdir -p $_WRAPPER_BIN
+
+if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ]; then
+# Replace CMake wrapper logic for cross-compilation
+sed 's|@CMAKE@|'"$(command -v cmake)"'|g' \
+$TERMUX_PKG_BUILDER_DIR/cmake-wrapper.in \
+> $_WRAPPER_BIN/cmake
+chmod 0700 $_WRAPPER_BIN/cmake
+fi
+
+# Export the wrapper binary directory to PATH
+export PATH=$_WRAPPER_BIN:$PATH
 }
 
 termux_step_post_configure() {
-    # Cleanup the custom CMake wrapper
-    rm -f $_WRAPPER_BIN/cmake
+# Cleanup the custom CMake wrapper
+rm -f $_WRAPPER_BIN/cmake
 }
