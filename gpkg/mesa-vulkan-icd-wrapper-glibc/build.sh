@@ -12,7 +12,6 @@ TERMUX_PKG_DEPENDS="vulkan-headers-glibc, libwayland-protocols-glibc, libglvnd-g
 TERMUX_PKG_BUILD_DEPENDS="libwayland-protocols-glibc, xorgproto-glibc, libxrandr-glibc glslang-glibc"
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
---cmake-prefix-path $TERMUX_PREFIX/glibc
 -Dcpp_rtti=false
 -Dgbm=disabled
 -Dopengl=false
@@ -23,7 +22,6 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dxmlconfig=disabled
 -Dvulkan-drivers=wrapper
 "
-
 termux_step_post_get_source() {
 	git fetch --unshallow
 	git checkout $_COMMIT
