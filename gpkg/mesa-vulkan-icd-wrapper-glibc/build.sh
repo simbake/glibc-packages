@@ -13,20 +13,20 @@ TERMUX_PKG_DEPENDS="vulkan-headers-glibc, vulkan-icd-loader-glibc, libdrm-glibc,
 TERMUX_PKG_BUILD_DEPENDS="libwayland-protocols-glibc, xorgproto-glibc, libxrandr-glibc"
 TERMUX_PKG_PYTHON_COMMON_DEPS="mako, setuptools, pyyaml"
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
--Dandroid-libbacktrace=disabled
+-Dandroid-libbacktrace=enabled
 -Db_ndebug=true
 -Dgbm=disabled
 -Dopengl=false
 -Dllvm=disabled
 -Dshared-llvm=disabled
--Dplatforms=x11,wayland
+-Dplatforms=x11,wayland,android
 -Dgallium-drivers=
 -Dxmlconfig=disabled
 -Dvulkan-drivers=wrapper
 -Dlibunwind=disabled
 -Dmicrosoft-clc=disabled
 -Dvalgrind=disabled
--Dandroid-stub=false
+-Dandroid-stub=true
 "
 termux_step_pre_configure() {
 	export MESON_PACKAGE_CACHE_DIR="${TERMUX_PKG_SRCDIR}"
