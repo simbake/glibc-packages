@@ -22,8 +22,3 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dxmlconfig=disabled
 -Dvulkan-drivers=wrapper
 "
-termux_step_post_get_source() {
-	git fetch --unshallow
-	# Do not use meson wrap projects
-	rm -rf subprojects
-}
