@@ -26,6 +26,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dlibunwind=disabled
 -Dmicrosoft-clc=disabled
 -Dvalgrind=disabled
+-Dandroid-stub=false
 "
 termux_step_pre_configure() {
 	export MESON_PACKAGE_CACHE_DIR="${TERMUX_PKG_SRCDIR}"
