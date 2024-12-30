@@ -1,4 +1,4 @@
-8TERMUX_PKG_HOMEPAGE=https://wayland.freedesktop.org/
+TERMUX_PKG_HOMEPAGE=https://wayland.freedesktop.org/
 TERMUX_PKG_DESCRIPTION="Wayland protocols library"
 TERMUX_PKG_LICENSE="MIT"
 TERMUX_PKG_MAINTAINER="@termux-pacman"
