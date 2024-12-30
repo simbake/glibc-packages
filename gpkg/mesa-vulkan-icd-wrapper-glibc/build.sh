@@ -14,8 +14,7 @@ TERMUX_PKG_BUILD_DEPENDS="libwayland-protocols-glibc, xorgproto-glibc, libxrandr
 TERMUX_PKG_PYTHON_COMMON_DEPS="mako, setuptools, pyyaml"
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dandroid-libbacktrace=disabled
--D b_ndebug=true
--Dcpp_rtti=false
+-Db_ndebug=true
 -Dgbm=disabled
 -Dopengl=false
 -Dllvm=disabled
@@ -24,6 +23,9 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dgallium-drivers=
 -Dxmlconfig=disabled
 -Dvulkan-drivers=wrapper
+-Dlibunwind=disabled
+-Dmicrosoft-clc=disabled
+-Dvalgrind=disabled
 "
 termux_step_pre_configure() {
 	export MESON_PACKAGE_CACHE_DIR="${TERMUX_PKG_SRCDIR}"
