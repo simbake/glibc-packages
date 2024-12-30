@@ -9,7 +9,7 @@ TERMUX_PKG_SRCURL=git+https://github.com/xMeM/mesa
 TERMUX_PKG_GIT_BRANCH=wrapper
 _COMMIT=578ceaf21b23233f90d1b31add7a0dfdfb31b860
 TERMUX_PKG_DEPENDS="vulkan-headers-glibc, libwayland-protocols-glibc, libglvnd-glibc, gcc-libs-glibc, libdrm-glibc, libllvm-glibc, libexpat-glibc, zlib-glibc, zstd-glibc, libx11-glibc, libxcb-glibc, libxext-glibc, libxfixes-glibc, libxshmfence-glibc, libxxf86vm-glibc, libwayland-glibc, libvdpau-glibc, libomxil-bellagio-glibc, libva-glibc, libxml2-glibc, libelf-glibc, libbz2-glibc, libclc-glibc"
-TERMUX_PKG_BUILD_DEPENDS="libwayland-protocols-glibc, xorgproto-glibc, libxrandr-glibc, glslang-glibc"
+TERMUX_PKG_BUILD_DEPENDS="libwayland-protocols-glibc >= 1.38, xorgproto-glibc, libxrandr-glibc, glslang-glibc"
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dcpp_rtti=false
