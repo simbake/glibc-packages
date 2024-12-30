@@ -29,18 +29,3 @@ termux_step_post_get_source() {
 	# Do not use meson wrap projects
 	rm -rf subprojects
 }
-termux_step_pre_configure() {
-	termux_setup_cmake
-	_WRAPPER_BIN=$TERMUX_PKG_BUILDDIR/_wrapper/bin
-	mkdir -p $_WRAPPER_BIN
-	sed 's|@CMAKE@|'"$(command -v cmake)"'|g' \
-	$TERMUX_PKG_BUILDER_DIR/cmake-wrapper.in \
-	> $_WRAPPER_BIN/cmake
-	chmod 0700 $_WRAPPER_BIN/cmake
-	termux_setup_wayland_cross_pkg_config_wrapper
-	export PATH=$_WRAPPER_BIN:$PATH
-}
-
-termux_step_post_configure() {
-	rm -f $_WRAPPER_BIN/cmake
-}
