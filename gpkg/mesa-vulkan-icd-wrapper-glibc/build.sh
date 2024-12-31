@@ -13,7 +13,7 @@ TERMUX_PKG_PYTHON_COMMON_DEPS="mako, setuptools, pyyaml"
 # disabling libunwind, microsoft-clc and valgrind will improve performance
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
--Dandroid-stub=true
+-Dandroid-stub=false
 -D b_ndebug=true
 -D dri3=enabled
 -D gallium-drivers=
@@ -27,7 +27,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -D llvm=disabled
 -D microsoft-clc=disabled
 -D osmesa=false
--D platforms=x11,wayland,android
+-D platforms=x11
 -D shared-glapi=disabled
 -D xmlconfig=disabled
 -D valgrind=disabled
