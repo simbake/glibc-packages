@@ -8,7 +8,7 @@ TERMUX_PKG_SRCURL=git+https://github.com/simbake/mesa2
 TERMUX_PKG_GIT_BRANCH=main
 #TERMUX_PKG_SHA256=2b68c4a6f204c1999815a457299f81c41ba7bf48c4674b0b2d1d8864f41f3709
 TERMUX_PKG_DEPENDS="vulkan-headers-glibc, libwayland-protocols-glibc, libglvnd-glibc, gcc-libs-glibc, libdrm-glibc, libllvm-glibc, libexpat-glibc, zlib-glibc, zstd-glibc, libx11-glibc, libxcb-glibc, libxext-glibc, libxfixes-glibc, libxshmfence-glibc, libxxf86vm-glibc, libwayland-glibc, libvdpau-glibc, libomxil-bellagio-glibc, libva-glibc, libxml2-glibc, libelf-glibc, libbz2-glibc, libclc-glibc"
-TERMUX_PKG_BUILD_DEPENDS="llvm-glibc, libwayland-protocols-glibc, xorgproto-glibc, glslang-glibc, libxrandr-glibc"
+TERMUX_PKG_BUILD_DEPENDS="libwayland-protocols-glibc, xorgproto-glibc, glslang-glibc, libxrandr-glibc"
 TERMUX_PKG_PYTHON_COMMON_DEPS="mako, setuptools, pyyaml"
 # disabling libunwind, microsoft-clc and valgrind will improve performance
 
