@@ -12,9 +12,9 @@ TERMUX_PKG_BLACKLISTED_ARCHES="arm, i686, x86_64"
 TERMUX_CMAKE_BUILD="Unix Makefiles"
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="-DCMAKE_BUILD_TYPE=RelWithDebInfo"
 TERMUX_PKG_RM_AFTER_INSTALL="etc/binfmt.d"
-_PREFIX=/data/data/com.termux/files/usr/glibc
+#_PREFIX=/data/data/com.termux/files/usr/glibc
 termux_step_pre_configure() {
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" --install-prefix $_PREFIX -DCMAKE_INSTALL_PREFIX=$_PREFIX -DARM_DYNAREC=ON -DBOX32=ON -DBOX32_BINFMT=1"
+		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -DCMAKE_INSTALL_PREFIX=$_PREFIX -DARM_DYNAREC=ON -DBOX32=ON -DBOX32_BINFMT=1"
 }
 
 termux_step_make_install() {
