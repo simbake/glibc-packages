@@ -7,24 +7,16 @@ TERMUX_PKG_SRCURL=git+https://github.com/simbake/box64
 TERMUX_PKG_GIT_BRANCH=v0.3.2
 #TERMUX_PKG_SHA256=e334e793638f375a28829c01b089c6ba27d8c3f6094fcbc9360b56ad9c09d0b5
 TERMUX_PKG_DEPENDS="gcc-libs-glibc"
-TERMUX_PKG_BLACKLISTED_ARCHES="arm, i686"
+TERMUX_PKG_BLACKLISTED_ARCHES="arm, i686, x86_64"
 #TERMUX_PKG_BUILD_DEPENDS="cmake-glibc make-glibc python-glibc"
 TERMUX_CMAKE_BUILD="Unix Makefiles"
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="-DCMAKE_BUILD_TYPE=RelWithDebInfo"
-TERMUX_PKG_RM_AFTER_INSTALL="glibc/etc/binfmt.d"
+TERMUX_PKG_RM_AFTER_INSTALL="etc/binfmt.d"
 _PREFIX=/data/data/com.termux/files/usr/glibc
 termux_step_pre_configure() {
-	if [ "${TERMUX_ARCH}" = "aarch64" ]; then
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" --install-prefix $_PREFIX -DCMAKE_INSTALL_PREFIX=$_PREFIX -DARM_DYNAREC=ON, -DBOX32=ON, -DBOX32_BINFMT=1"
-	elif [ "${TERMUX_ARCH}" = "x86_64" ]; then
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" -DLD80BITS=1 -DNOALIGN=1"
-	fi
+		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" --install-prefix $_PREFIX -DCMAKE_INSTALL_PREFIX=$_PREFIX -DARM_DYNAREC=ON -DBOX32=ON -DBOX32_BINFMT=1"
 }
 
 termux_step_make_install() {
-	if [ "${TERMUX_ARCH}" = "aarch64" ]; then
 		make install
-	elif [ "${TERMUX_ARCH}" = "x86_64" ]; then
-		install -Dm755 box64 -t ${TERMUX_PREFIX}/bin/
-	fi
 }
