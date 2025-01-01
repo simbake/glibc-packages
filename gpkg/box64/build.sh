@@ -9,7 +9,7 @@ TERMUX_PKG_GIT_BRANCH=main
 TERMUX_PKG_DEPENDS="gcc-libs-glibc"
 TERMUX_PKG_BLACKLISTED_ARCHES="arm, i686"
 TERMUX_PKG_BUILD_DEPENDS="cmake-glibc make-glibc python-glibc"
-#TERMUX_CMAKE_BUILD="Unix Makefiles"
+TERMUX_CMAKE_BUILD="Unix Makefiles"
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="-DCMAKE_BUILD_TYPE=RelWithDebInfo"
 TERMUX_PKG_RM_AFTER_INSTALL="glibc/etc/binfmt.d"
 _PREFIX=/data/data/com.termux/files/usr
