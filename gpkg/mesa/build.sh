@@ -13,7 +13,7 @@ TERMUX_PKG_PYTHON_COMMON_DEPS="mako, setuptools, pyyaml"
 # disabling libunwind, microsoft-clc and valgrind will improve performance
 
 TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
--Dgallium-drivers=zink \
+-Dgallium-drivers=zink,swrast,virgl \
 -Dvulkan-drivers= \
 -Ddri-drivers= \
 -Dplatforms=x11,wayland \
