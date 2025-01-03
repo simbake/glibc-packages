@@ -16,8 +16,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dgallium-drivers=zink,swrast,virgl \
 -Dvulkan-drivers= \
 -Ddri-drivers= \
--Dplatforms=x11,wayland \
--Dbuildtype=release
+-Dplatforms=x11,wayland
 "
 
 termux_step_pre_configure() {
